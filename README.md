@@ -1,40 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Healthcare Consultation Assistant (Demonstration application only)
+
+An AI-powered SaaS application that  generate healthcare related summaries, action items, and patient-friendly emails from consultation notes.
+
+## Features
+
+- 📋 **Professional Summaries**: Generate comprehensive medical record summaries
+- ✅ **Action Items**: Clear next steps and follow-up actions
+- 📧 **Patient Emails**: Draft patient-friendly communications
+- 🔐 **Secure Authentication**: Clerk-based user management
+- 💳 **Subscription Management**: Premium plan protection
+- 🎨 **Modern UI**: Responsive design with dark mode support
+
+## Tech Stack
+
+### Frontend
+- **Next.js 15** with TypeScript
+- **Tailwind CSS** for styling
+- **React Hooks** for state management
+- **Server-Sent Events** for real-time streaming
+- **React Markdown** for content rendering
+
+### Backend
+- **FastAPI** with Python 3.11+
+- **Pydantic** for data validation
+- **OpenAI API** for AI generation
+- **JWT Authentication** with Clerk
+
+### Development
+- **Hybrid Architecture** - Node.js frontend + Python backend
+- **Vercel Deployment**
+
+
+## Project Structure
+saas/
+├── api/
+│ └── index.py # FastAPI backend
+├── pages/
+│ ├── app.tsx # App configuration
+│ ├── index.tsx # Landing page
+│ └── product.tsx # Consultation form
+├── styles/
+│ └── globals.css # Global styles
+├── package.json # Node.js dependencies
+├── pyproject.toml # Python dependencies
+└── README.md
+
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
+- Python 3.11+
+- OpenAI API key
+- Clerk account
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd saas
+   ```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+2. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. **Install Python dependencies**
+   ```bash
+   uv sync
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+4. **Set up environment variables**
+   ```bash
+   # Create .env.local
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
+   CLERK_SECRET_KEY=your_clerk_secret
+   CLERK_JWKS_URL=your_jwks_url
+   OPENAI_API_KEY=your_openai_key
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Run the development server**
+   ```bash
+   # Terminal 1: Next.js frontend
+   npm run dev
+   
+   # Terminal 2: FastAPI backend
+   uvicorn api.index:app --reload --port 8000
+   ```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. **Sign up/Sign in** using Clerk authentication
+2. **Subscribe** to the premium plan
+3. **Fill out the consultation form** with:
+   - Patient name
+   - Visit date
+   - Detailed consultation notes
+4. **Generate AI-powered content** including:
+   - Professional summary for medical records
+   - Next steps for the doctor
+   - Patient-friendly email draft
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+MIT License - see LICENSE file for details
