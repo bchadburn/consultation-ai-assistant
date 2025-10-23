@@ -56,22 +56,31 @@ saas/
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone and install dependencies**
    ```bash
-   git clone <your-repo-url>
-   cd saas
-   ```
-
-2. **Install Node.js dependencies**
-   ```bash
+   git clone https://github.com/bchadburn/consultation-ai-assistant.git
+   cd consultation-ai-assistant
    npm install
-   ```
-
-3. **Install Python dependencies**
-   ```bash
    uv sync
    ```
 
+2. **Set up environment variables**
+   ```bash
+   # Create .env.local
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
+   CLERK_SECRET_KEY=your_clerk_secret
+   CLERK_JWKS_URL=your_jwks_url
+   OPENAI_API_KEY=your_openai_key
+   ```
+
+3. **Deploy to Vercel**
+   ```bash
+   vercel --prod
+
+   # Local development (optional)
+   npm run dev
+   uvicorn api.index:app --reload --port 8000
+   
 4. **Set up environment variables**
    ```bash
    # Create .env.local
@@ -102,6 +111,10 @@ saas/
    - Professional summary for medical records
    - Next steps for the doctor
    - Patient-friendly email draft
+
+## 🔒 Security Note
+
+This is a demonstration application. For production healthcare use, implement proper HIPAA compliance measures.
 
 ## License
 
